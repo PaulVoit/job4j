@@ -1,1 +1,1 @@
-# job4j the beginning
+# job4j the beginning. I continue studying.
