@@ -19,8 +19,8 @@ public class SqMaxTest {
 	@Test
 	public void whenThirdMax() {
 		SqMax check = new SqMax();
-		int result = check.max(10, 2, 12, 6);
-		assertThat(result, is(12));
+		int result = check.max(3, 2, 9, 1);
+		assertThat(result, is(9));
 	}
 	@Test
 	public void whenForthMax() {
@@ -34,4 +34,6 @@ public class SqMaxTest {
 		int result = check.max(3, 3, 3, 3);
 		assertThat(result, is(3));
 	}
+
+
 }
