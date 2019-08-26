@@ -1,3 +1,9 @@
+/**
+ * Calculator
+ *
+ * @author Pavel Voytovitskiy (paulv2007@yandex.ru)
+ */
+
 package ru.job4j.calculator;
 
 public class Calculator {
