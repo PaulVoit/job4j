@@ -5,8 +5,15 @@ public class EndsWith {
 		boolean result = true;
 		char[] pst = post.toCharArray();
 		char[] wrd = word.toCharArray();
-		String pst1 = new String(pst);
-		String wrd1 = new String(wrd);
-		return wrd1.endsWith(pst1);
+		int max1 = pst.length - 1;
+		int max2 = wrd.length - 1;
+		for (int i = 0; i < max1 + 1; i++) {
+			if (pst[i] == wrd[max2 - max1 + i]) {
+				continue;
+			} else result = false;
+			break;
+		}
+		return result;
 	}
+
 }
