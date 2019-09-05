@@ -8,12 +8,12 @@ public class EndsWith {
 		int max1 = pst.length - 1;
 		int max2 = wrd.length - 1;
 		for (int i = 0; i < max1 + 1; i++) {
-			if (pst[i] == wrd[max2 - max1 + i]) {
-				continue;
-			} else result = false;
-			break;
+			if (pst[max1 - i] != wrd[max2 - i]) {
+				result = false;
+				break;
+			}
+
 		}
 		return result;
 	}
-
 }
