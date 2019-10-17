@@ -1,3 +1,6 @@
 # job4j the beginning. I continue studying.
 
-смена веток git
+В курсе прозводилась работа в ветках git
+
+Создание ветки из IDEA
+
