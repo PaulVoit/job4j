@@ -17,18 +17,18 @@ public class Merge {
 				rsl[k] = right[j];
 				j++;
 			}
-				k++;
+			k++;
 		}
 		while (i < left.length) {
 			rsl[k] = left[i];
 			i++;
 			k++;
 		}
-			while (j < right.length) {
-				rsl[k] = right[j];
-				j++;
-				k++;
-			}
+		while (j < right.length) {
+			rsl[k] = right[j];
+			j++;
+			k++;
+		}
 		return rsl;
 	}
 

@@ -1,5 +1,6 @@
-import org.junit.Test;
 
+import org.junit.Test;
+import ru.job4j.condition.SqMax;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -39,6 +40,4 @@ public class SqMaxTest {
 		int result = check.max(3, 3, 3, 3);
 		assertThat(result, is(3));
 	}
-
-
 }

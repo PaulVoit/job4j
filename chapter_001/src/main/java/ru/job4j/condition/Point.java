@@ -11,6 +11,4 @@ public class Point {
 		double result = distance(5, 3, 2, 7);
 		System.out.println("result (5, 3) to (2, 7) " + result);
 	}
-
-
 }
