@@ -1,14 +1,14 @@
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.awt.*;
+import ru.job4j.condition.Point;
 
 
 public class PointTest {
 
 	@Test
 	public void distance() {
+
 		Point a = new Point(0, 0);
 		Point b = new Point(0, 2);
 		double expected = 2.0;
