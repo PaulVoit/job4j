@@ -1,21 +1,18 @@
-package ru.job4j.condition;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.awt.*;
 
 
 public class PointTest {
 
 	@Test
 	public void distance() {
-		int in1 = 5;
-		int in2 = 3;
-		int in3 = 2;
-		int in4 = 7;
-		double expected = 5;
-		double out = Point.distance(in1, in2, in3, in4);
+		Point a = new Point(0, 0);
+		Point b = new Point(0, 2);
+		double expected = 2.0;
+		double out = a.distance(b);
 		Assert.assertEquals(expected, out, 0);
 	}
-
-
 }
