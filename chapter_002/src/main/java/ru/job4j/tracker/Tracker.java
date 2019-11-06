@@ -17,32 +17,39 @@ public class Tracker {
 	}
 
 	public boolean replace(String id, Item item) {
+		boolean result = false;
 		for (int i = 0; i < this.items.length; i++) {
-			if (item.getId().equals(id)) {
-				items[i] = item;
-				return true;
+			if (item.getId().equals(id) && this.items[i] != null) {
+				this.items[i] = item;
+				item.setId(id);
+				break;
 			}
 		}
-		return false;
+		return result;
 	}
 
 	public boolean delete(String id) {
+		boolean result = false;
 		for (int i = 0; i < this.items.length; i++) {
 			if (this.items[i].getId().equals(id) && this.items[i] != null) {
 				System.arraycopy(this.items, i + 1, this.items, i, this.items.length - 1 - i);
-				return true;
+				this.items[this.items.length - 1] = null;
+				position--;
+				break;
 			}
 		}
-		return false;
+		return result;
 	}
 
 	public Item[] findAll() {
+		Item[] itemsWithoutNull = null;
 		for (Item item : this.items) {
 			if (item != null) {
-				return Arrays.copyOf(this.items, position);
+				itemsWithoutNull = Arrays.copyOf(this.items, position);
+				break;
 			}
 		}
-		return null;
+		return itemsWithoutNull;
 	}
 
 	public Item[] findByName(String key) {
@@ -59,12 +66,14 @@ public class Tracker {
 	}
 
 	public Item findById(String id) {
+		Item result = null;
 		for (Item item : this.items) {
-			if (item.getId().equals(id)) {
-				return item;
+			if (item != null && item.getId().equals(id)) {
+				result = item;
+				break;
 			}
 		}
-		return null;
+		return result;
 	}
 
 	private String generateId() {
