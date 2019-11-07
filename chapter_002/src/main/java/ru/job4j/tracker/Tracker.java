@@ -44,14 +44,14 @@ public class Tracker {
 	}
 
 	public Item[] findAll() {
-		Item[] itemsWithoutNull = null;
+		Item[] itemsWithoutNullElement = null;
 		for (Item item : this.items) {
 			if (item != null) {
-				itemsWithoutNull = Arrays.copyOf(this.items, position);
+				itemsWithoutNullElement = Arrays.copyOf(this.items, position);
 				break;
 			}
 		}
-		return itemsWithoutNull;
+		return itemsWithoutNullElement;
 	}
 
 	public Item[] findByName(String key) {
