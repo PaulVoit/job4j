@@ -22,6 +22,7 @@ public class Tracker {
 			if (item.getId().equals(id) && this.items[i] != null) {
 				this.items[i] = item;
 				item.setId(id);
+				result = true;
 				break;
 			}
 		}
@@ -35,6 +36,7 @@ public class Tracker {
 				System.arraycopy(this.items, i + 1, this.items, i, this.items.length - 1 - i);
 				this.items[this.items.length - 1] = null;
 				position--;
+				result = true;
 				break;
 			}
 		}
@@ -42,14 +44,14 @@ public class Tracker {
 	}
 
 	public Item[] findAll() {
-		Item[] itemsWithoutNull = null;
+		Item[] itemsWithoutNullElement = null;
 		for (Item item : this.items) {
 			if (item != null) {
-				itemsWithoutNull = Arrays.copyOf(this.items, position);
+				itemsWithoutNullElement = Arrays.copyOf(this.items, position);
 				break;
 			}
 		}
-		return itemsWithoutNull;
+		return itemsWithoutNullElement;
 	}
 
 	public Item[] findByName(String key) {
