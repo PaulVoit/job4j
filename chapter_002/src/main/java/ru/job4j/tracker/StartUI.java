@@ -30,7 +30,6 @@ public class StartUI {
 				String id = scanner.nextLine();
 				System.out.print("Enter New Item Name: ");
 				String name = scanner.nextLine();
-				Item item = tracker.findById(id);
 				Item item2 = new Item(name);
 				if (tracker.replace(id, item2)) {
 					System.out.println("Item: " + id + " replaced");
@@ -48,7 +47,6 @@ public class StartUI {
 				System.out.println("=== Find Item by Id ====");
 				System.out.print("Enter Item Id: ");
 				String id = scanner.nextLine();
-				tracker.findById(id);
 				Item item = tracker.findById(id);
 				if (item != null) {
 					System.out.println("Item ID " + item.getId());
