@@ -1,10 +1,7 @@
 
 import org.junit.Test;
 import ru.job4j.model.Item;
-import ru.job4j.tracker.Input;
-import ru.job4j.tracker.StartUI;
-import ru.job4j.tracker.StubInput;
-import ru.job4j.tracker.Tracker;
+import ru.job4j.tracker.*;
 
 
 import static org.hamcrest.core.Is.is;
@@ -46,4 +43,23 @@ public class StartUITest {
 		Item[] result = tracker.findAll();
 		assertThat(result, is(answers[1]));
 	}
+	@Test
+	public void whenExit() {
+		StubInput input = new StubInput(
+				new String[] {"0"}
+		);
+		StubAction action = new StubAction();
+		new StartUI().init(input, new Tracker(), new UserAction[] { action });
+		assertThat(action.isCall(), is(true));
+	}
+	@Test
+	public void whenFindAllItemsThenTrue() {
+		StubInput input = new StubInput(
+				new String[] {"1"}
+		);
+		StubAction action = new StubAction();
+		new StartUI().init(input, new Tracker(), new UserAction[] { action });
+		assertThat(action.isCall(), is(true));
+	}
+
 }
