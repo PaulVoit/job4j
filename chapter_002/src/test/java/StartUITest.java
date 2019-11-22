@@ -52,14 +52,4 @@ public class StartUITest {
 		new StartUI().init(input, new Tracker(), new UserAction[] { action });
 		assertThat(action.isCall(), is(true));
 	}
-	@Test
-	public void whenFindAllItemsThenTrue() {
-		StubInput input = new StubInput(
-				new String[] {"1"}
-		);
-		StubAction action = new StubAction();
-		new StartUI().init(input, new Tracker(), new UserAction[] { action });
-		assertThat(action.isCall(), is(true));
-	}
-
 }
