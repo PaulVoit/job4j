@@ -2,7 +2,11 @@ package ru.job4j.tracker;
 
 import ru.job4j.model.Item;
 
-public class ShowAllItemsAction implements UserAction {
+public class ShowAllItemsAction extends BaseAction {
+	public ShowAllItemsAction(int key, String name) {
+		super(key, name);
+	}
+
 	@Override
 	public String name() {
 		return "=== Show all Items ====";

@@ -2,7 +2,11 @@ package ru.job4j.tracker;
 
 import ru.job4j.model.Item;
 
-public class ReplaceAction implements UserAction {
+public class ReplaceAction extends BaseAction {
+
+	public ReplaceAction(int key, String name) {
+		super(key, name);
+	}
 
 	@Override
 	public String name() {
