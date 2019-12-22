@@ -3,9 +3,21 @@ package ru.job4j.tracker;
 public class StubAction implements UserAction {
 	private boolean call = false;
 
+
+	@Override
+	public int key() {
+		return 0;
+	}
+
+	@Override
+	public String info() {
+		return null;
+	}
+
+
 	@Override
 	public String name() {
-		return "Stub action";
+		return "0. Stub action";
 	}
 
 	@Override

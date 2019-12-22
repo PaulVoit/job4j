@@ -23,7 +23,7 @@ public class ShowAllItemsActionTest {
 		Tracker tracker = new Tracker();
 		Item item = new Item("fix bug");
 		tracker.add(item);
-		ShowAllItemsAction act = new ShowAllItemsAction();
+		ShowAllItemsAction act = new ShowAllItemsAction(1, "Show all Items");
 		act.execute(new StubInput(new String[]{}), tracker);
 		String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
 				.add(item.getId() + " " + item.getName())
@@ -31,6 +31,8 @@ public class ShowAllItemsActionTest {
 		assertThat(new String(out.toByteArray()), is(expect));
 		System.setOut(def);
 	}
+
+
 }
 
 

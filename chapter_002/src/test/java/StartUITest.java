@@ -6,6 +6,8 @@ import ru.job4j.tracker.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringJoiner;
 
 import static org.hamcrest.core.Is.is;
@@ -18,7 +20,7 @@ public class StartUITest {
 		Input input = new StubInput(answers);
 		Tracker tracker = new Tracker();
 		StartUI.createItem(input, tracker);
-		Item created = tracker.findAll()[0];
+		Item created = tracker.findAll().get(0);
 		Item expected = new Item("Fix PC");
 		assertThat(created.getName(), is(expected.getName()));
 	}
@@ -42,30 +44,36 @@ public class StartUITest {
 		Tracker tracker = new Tracker();
 		Item item = new Item("new item");
 		tracker.add(item);
-		String[] answers = {item.getId(), null};
+		String[] answers = {item.getId()};
+
 		StartUI.deleteItem(new StubInput(answers), tracker);
-		Item[] result = tracker.findAll();
-		assertThat(result, is(answers[1]));
+		List<Item> result = tracker.findAll();
+		Item expected = null;
+		assertThat(result.toArray(), is(expected));
 	}
+
 	@Test
 	public void whenExit() {
 		StubInput input = new StubInput(
-				new String[] {"0"}
+				new String[]{"0"}
 		);
 		StubAction action = new StubAction();
-		new StartUI().init(input, new Tracker(), new UserAction[] { action });
+		new StartUI().init(input, new Tracker(), new ArrayList<UserAction>());
 		assertThat(action.isCall(), is(true));
 	}
+
 	@Test
+
 	public void whenPrtMenu() {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		PrintStream def = System.out;
 		System.setOut(new PrintStream(out));
+		ArrayList<UserAction> action = new ArrayList<>();
+		action.add(new StubAction());
 		StubInput input = new StubInput(
-				new String[] {"0"}
+				new String[]{"0"}
 		);
-		StubAction action = new StubAction();
-		new StartUI().init(input, new Tracker(), new UserAction[] { action });
+		new StartUI().init(input, new Tracker(), action);
 		String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
 				.add("Menu.")
 				.add("0. Stub action")
@@ -73,4 +81,6 @@ public class StartUITest {
 		assertThat(new String(out.toByteArray()), is(expect));
 		System.setOut(def);
 	}
+
+
 }
