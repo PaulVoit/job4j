@@ -1,14 +1,16 @@
 import org.junit.Test;
 import ru.job4j.strategy.Shape;
 import ru.job4j.strategy.Triangle;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class Triangle2Test {
 	@Test
 	public void whenDrawTriangle() {
-		String sep = System.lineSeparator();
+
 		Triangle triangle = new Triangle();
+		String sep = System.lineSeparator();
 		assertThat(
 				triangle.draw(),
 				is(

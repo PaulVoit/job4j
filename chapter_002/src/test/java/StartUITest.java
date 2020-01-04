@@ -48,19 +48,10 @@ public class StartUITest {
 
 		StartUI.deleteItem(new StubInput(answers), tracker);
 		List<Item> result = tracker.findAll();
-		Item expected = null;
+		Item[] expected = {};
 		assertThat(result.toArray(), is(expected));
 	}
 
-	@Test
-	public void whenExit() {
-		StubInput input = new StubInput(
-				new String[]{"0"}
-		);
-		StubAction action = new StubAction();
-		new StartUI().init(input, new Tracker(), new ArrayList<UserAction>());
-		assertThat(action.isCall(), is(true));
-	}
 
 	@Test
 
