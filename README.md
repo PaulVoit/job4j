@@ -2,5 +2,5 @@
 [![codecov](https://codecov.io/gh/PaulVoit/job4j/branch/master/graph/badge.svg)](https://codecov.io/gh/PaulVoit/job4j)
 
 # job4j the beginning. I continue studying.
-Начальный проект для курса Junior
+РќР°С‡Р°Р»СЊРЅС‹Р№ РїСЂРѕРµРєС‚ РґР»СЏ РєСѓСЂСЃР° Junior.
 
