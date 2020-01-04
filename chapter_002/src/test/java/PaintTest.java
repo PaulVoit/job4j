@@ -54,14 +54,13 @@ public class PaintTest {
 		assertThat(
 				this.out.toString(),
 				is(
-						new StringJoiner(
-								System.lineSeparator(), "",
-								System.lineSeparator())
-								.add("    0")
-								.add("   0 0")
-								.add("  0   0")
-								.add(" 0     0")
-								.add("000000000")
+						new StringBuilder()
+								.append("    0").append(System.lineSeparator())
+								.append("   0 0").append(System.lineSeparator())
+								.append("  0   0").append(System.lineSeparator())
+								.append(" 0     0").append(System.lineSeparator())
+								.append("000000000").append(System.lineSeparator())
+								.append(System.lineSeparator())
 								.toString()
 				)
 		);
