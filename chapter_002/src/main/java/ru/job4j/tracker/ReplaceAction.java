@@ -2,6 +2,8 @@ package ru.job4j.tracker;
 
 import ru.job4j.model.Item;
 
+import java.util.function.Consumer;
+
 public class ReplaceAction extends BaseAction {
 
 	public ReplaceAction(int key, String name) {
@@ -14,16 +16,16 @@ public class ReplaceAction extends BaseAction {
 	}
 
 	@Override
-	public boolean execute(Input input, Tracker tracker) {
-		System.out.print("Enter Item id: ");
+	public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
+		output.accept("Enter Item id: ");
 		String id = input.askStr("");
-		System.out.print("Enter New Item Name: ");
+		output.accept("Enter New Item Name: ");
 		String name = input.askStr("");
 		Item item2 = new Item(name);
 		if (tracker.replace(id, item2)) {
-			System.out.println("Item: " + id + " replaced");
+			output.accept("Item: " + id + " replaced");
 		} else {
-			System.out.println("Item with ID: " + id + " doesn't exist");
+			output.accept("Item with ID: " + id + " doesn't exist");
 		}
 		return true;
 	}

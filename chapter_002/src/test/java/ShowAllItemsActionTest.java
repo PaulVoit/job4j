@@ -24,7 +24,7 @@ public class ShowAllItemsActionTest {
 		Item item = new Item("fix bug");
 		tracker.add(item);
 		ShowAllItemsAction act = new ShowAllItemsAction(1, "Show all Items");
-		act.execute(new StubInput(new String[]{}), tracker);
+		act.execute(new StubInput(new String[]{}), tracker, System.out::println);
 		String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
 				.add(item.getId() + " " + item.getName())
 				.toString();

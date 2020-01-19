@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.function.Consumer;
+
 public class ExitPrograme extends BaseAction {
 
 	protected ExitPrograme(int key, String name) {
@@ -12,7 +14,7 @@ public class ExitPrograme extends BaseAction {
 	}
 
 	@Override
-	public boolean execute(Input input, Tracker tracker) {
+	public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
 		return false;
 	}
 }

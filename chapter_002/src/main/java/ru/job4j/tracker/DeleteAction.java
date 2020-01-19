@@ -2,6 +2,8 @@ package ru.job4j.tracker;
 
 import ru.job4j.model.Item;
 
+import java.util.function.Consumer;
+
 public class DeleteAction extends BaseAction {
 	public DeleteAction(int key, String name) {
 		super(key, name);
@@ -13,11 +15,11 @@ public class DeleteAction extends BaseAction {
 	}
 
 	@Override
-	public boolean execute(Input input, Tracker tracker) {
-		System.out.print("Enter Item id: ");
+	public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
+		output.accept("Enter Item id: ");
 		String id = input.askStr("");
 		if (tracker.delete(id)) {
-			System.out.println("Item " + id + "deleted");
+			output.accept("Item " + id + "deleted");
 		}
 		return true;
 	}

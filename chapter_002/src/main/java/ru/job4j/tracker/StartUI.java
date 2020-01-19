@@ -4,23 +4,35 @@ import ru.job4j.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 
 public class StartUI {
-	public void init(Input input, Tracker tracker, ArrayList<UserAction> actions) {
+
+	private final Input input;
+	private final Tracker tracker;
+	private final Consumer<String> output;
+
+	public StartUI(Input input, Tracker tracker, Consumer<String> output) {
+		this.input = input;
+		this.tracker = tracker;
+		this.output = output;
+	}
+
+	public void init(Input input, Tracker tracker, ArrayList<UserAction> actions, Consumer<String> output) {
 		boolean run = true;
 		while (run) {
-			this.showMenu(actions);
+			this.showMenu(actions, output);
 			int select = input.askInt("Select: ", actions.size());
 			UserAction action = actions.get(select);
-			run = action.execute(input, tracker);
+			run = action.execute(input, tracker, output);
 		}
 	}
 
-	private void showMenu(ArrayList<UserAction> actions) {
-		System.out.println("Menu.");
+	private void showMenu(ArrayList<UserAction> actions, Consumer<String> output) {
+		output.accept("Menu.");
 		for (UserAction i : actions) {
-			System.out.println(i.name());
+			output.accept(i.name());
 		}
 	}
 
@@ -97,7 +109,8 @@ public class StartUI {
 		actions.add(new FindItemByIdAction(4, "Find Item by ID"));
 		actions.add(new FindItemByNameAction(5, "Find Item by Name"));
 		actions.add(new ExitPrograme(6, "Exit programme"));
-		new StartUI().init(validate, tracker, actions);
+		new StartUI(new StubInput(new String[]{"6"}), new Tracker(), System.out::println)
+				.init(validate, tracker, actions, System.out::println);
 	}
 
 }
