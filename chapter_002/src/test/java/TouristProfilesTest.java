@@ -21,7 +21,7 @@ public class TouristProfilesTest {
 		Address address3 = new Address("Жмеринка", "Бобруйская", 10, 85);
 		List<Profile> profilesList = List.of(new Profile(address), new Profile(address1), new Profile(address2), new Profile(address3));
 		List<Address> result = profiles.collect(profilesList);
-		List<Address> expected = List.of(address, address1, address2, address3);
+		List<Address> expected = List.of(address3, address1, address, address2);
 		assertThat(result, is(expected));
 	}
 
