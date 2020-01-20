@@ -24,4 +24,17 @@ public class TouristProfilesTest {
 		List<Address> expected = List.of(address, address1, address2, address3);
 		assertThat(result, is(expected));
 	}
+
+	@Test
+	public void whenSortedAndUniqueAddresses() {
+		Profiles profiles = new Profiles();
+		Address address = new Address("Санкт-Петербург", "Среднерогатская", 9, 746);
+		Address address1 = new Address("Москва", "Козмодамианская", 60, 100);
+		Address address2 = new Address("Жмеринка", "Бобруйская", 10, 85);
+		Address address3 = new Address("Жмеринка", "Бобруйская", 10, 85);
+		List<Profile> profilesList = List.of(new Profile(address3), new Profile(address1), new Profile(address2), new Profile(address));
+		List<Address> expected = List.of(address2, address1, address);
+		List<Address> result = profiles.collect(profilesList);
+		assertThat(result, is(expected));
+	}
 }
