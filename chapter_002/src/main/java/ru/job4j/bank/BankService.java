@@ -21,6 +21,7 @@ public class BankService {
 	}
 
 	public User findByPassport(String passport) {
+		/*
 		User result = null;
 		for (User user : users.keySet()) {
 			if (user.getPassport().equals(passport)) {
@@ -29,9 +30,15 @@ public class BankService {
 			}
 		}
 		return result;
+		 */
+		return users.keySet().stream().filter(
+				user -> user.getPassport().equals(passport))
+				.findFirst()
+				.orElse(null);
 	}
 
 	public Account findByRequisite(String passport, String requisite) {
+		/*
 		Account account = null;
 		for (User user : users.keySet()) {
 			if (user.getPassport().equals(passport)) {
@@ -43,6 +50,11 @@ public class BankService {
 			}
 		}
 		return account;
+		 */
+		List<Account> accounts = users.get(findByPassport(passport));
+		return accounts.stream().filter(account -> account.getRequisite()
+				.equals(requisite))
+				.findFirst().orElse(null);
 	}
 
 
