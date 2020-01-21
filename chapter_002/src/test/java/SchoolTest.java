@@ -2,9 +2,7 @@ import org.junit.Test;
 import ru.job4j.stream.School;
 import ru.job4j.stream.Student;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -41,5 +39,18 @@ public class SchoolTest {
 		School sch = new School();
 		List<Student> classA = sch.collect(all, stud -> stud.getScore() < 50);
 		assertThat(classA, is(Arrays.asList(new Student(10), new Student(20), new Student(30), new Student(40))));
+	}
+
+	@Test
+	public void whenListToMap() {
+		School school = new School();
+		Student student1 = new Student("Svetlana");
+		Student student2 = new Student("Andrey");
+		List<Student> students = List.of(student1, student2);
+		Map<String, Student> result = school.listToMap(students);
+		Map<String, Student> expected = new HashMap<>();
+		expected.put("Ivan", student1);
+		expected.put("Petr", student2);
+		assertThat(result, is(expected));
 	}
 }

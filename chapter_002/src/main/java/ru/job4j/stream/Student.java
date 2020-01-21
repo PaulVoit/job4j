@@ -4,9 +4,18 @@ import java.util.Objects;
 
 public class Student {
 	private int score;
+	private String name;
 
 	public Student(int score) {
 		this.score = score;
+	}
+
+	public Student(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public int getScore() {
