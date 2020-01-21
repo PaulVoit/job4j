@@ -53,4 +53,16 @@ public class SchoolTest {
 		expected.put("Andrey", student2);
 		assertThat(result, is(expected));
 	}
+
+	@Test
+	public void whenStudentListWithBoundWithoutNullAndSorted() {
+		Student st1 = new Student("Ivan", 99);
+		Student st2 = new Student("Petr", 70);
+		Student st3 = new Student("Sergey", 50);
+		Student st4 = new Student("Anna", 20);
+		List<Student> result = new School().levelOf(Arrays.asList(st1, st2, st3, null, st4), 69);
+		assertThat(result.size(), is(2));
+		assertThat(result.get(0), is(st1));
+		assertThat(result.get(1), is(st2));
+	}
 }

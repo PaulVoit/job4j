@@ -1,12 +1,18 @@
 package ru.job4j.stream;
 
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public class Student {
 	private int score;
 	private String name;
 
 	public Student(int score) {
+		this.score = score;
+	}
+
+	public Student(String name, int score) {
+		this.name = name;
 		this.score = score;
 	}
 
@@ -21,6 +27,7 @@ public class Student {
 	public int getScore() {
 		return score;
 	}
+
 
 	@Override
 	public String toString() {
