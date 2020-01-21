@@ -10,6 +10,7 @@ public class School {
 		return students.stream().filter(predict).collect(Collectors.toList());
 	}
 
+
 	public Map<String, Student> listToMap(List<Student> students) {
 		return students.stream().collect(Collectors.toMap(x -> x.getName(), x -> x));
 	}

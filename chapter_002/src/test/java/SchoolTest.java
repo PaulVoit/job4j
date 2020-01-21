@@ -49,8 +49,8 @@ public class SchoolTest {
 		List<Student> students = List.of(student1, student2);
 		Map<String, Student> result = school.listToMap(students);
 		Map<String, Student> expected = new HashMap<>();
-		expected.put("Ivan", student1);
-		expected.put("Petr", student2);
+		expected.put("Svetlana", student1);
+		expected.put("Andrey", student2);
 		assertThat(result, is(expected));
 	}
 }

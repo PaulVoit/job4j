@@ -41,6 +41,7 @@ public class Student {
 		return score == student.score;
 	}
 
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(score);
