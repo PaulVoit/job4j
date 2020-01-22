@@ -14,22 +14,19 @@ public class CountingTest {
 	@Test
 	public void whenLinearFunction() {
 		List<Double> result = new Counting().countLine(6, 9, 1, 1);
-		List<Double> expected = new ArrayList<>(Arrays.asList(7D, 8D, 9D));
-		assertThat(result, is(expected));
+		assertThat(result, is(List.of(7D, 8D, 9D)));
 	}
 
 	@Test
 	public void whenSquareFunction() {
 		List<Double> result = new Counting().countSqr(1, 4);
-		List<Double> expected = new ArrayList<>(Arrays.asList(1D, 4D, 9D));
-		assertThat(result, is(expected));
+		assertThat(result, is(List.of(1D, 4D, 9D)));
 	}
 
 	@Test
 	public void whenLogFunction() {
 		List<Double> result = new Counting().countLog(1, 2);
-		List<Double> expected = new ArrayList<>(Arrays.asList(0D));
-		assertThat(result, is(expected));
+		assertThat(result, is(List.of(0D)));
 	}
 }
 

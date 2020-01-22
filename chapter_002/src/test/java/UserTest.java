@@ -15,9 +15,7 @@ import static org.junit.Assert.*;
 public class UserTest {
 	@Test
 	public void whenAsc() {
-		Set<User> users = new TreeSet<>();
-		users.add(new User("Petr", 32));
-		users.add(new User("Ivan", 31));
+		Set<User> users = Set.of(new User("Petr", 32), new User("Ivan", 31));
 		Iterator<User> it = users.iterator();
 		assertThat(it.next(), is(new User("Ivan", 31)));
 		assertThat(it.next(), is(new User("Petr", 32)));
@@ -31,15 +29,15 @@ public class UserTest {
 				);
 		assertThat(rsl, greaterThan(0));
 	}
+
 	@Test
 	public void whenSortByAge() {
-		Set<User> users = new TreeSet<>();
-		users.add(new User("Pavel", 18));
-		users.add(new User("Pavel", 16));
+		Set<User> users = Set.of(new User("Pavel", 18), new User("Pavel", 16));
 		Iterator<User> it = users.iterator();
-		assertThat(it.next(), is(new User("Pavel", 16)));
 		assertThat(it.next(), is(new User("Pavel", 18)));
+		assertThat(it.next(), is(new User("Pavel", 16)));
 	}
+
 	@Test
 	public void whenSortByNameAscending() {
 		Comparator<User> ascenName = new AscendingByName();
@@ -49,6 +47,7 @@ public class UserTest {
 		);
 		assertThat(rsl, greaterThan(0));
 	}
+
 	@Test
 	public void whenSortByNameDescendingSort() {
 		Comparator<User> descenName = new DescendingByName();
@@ -58,6 +57,7 @@ public class UserTest {
 		);
 		assertThat(rsl, lessThan(0));
 	}
+
 	@Test
 	public void whenSortByAgeDescending() {
 		Comparator<User> descenAge = new DescendingByAge();
@@ -67,6 +67,7 @@ public class UserTest {
 		);
 		assertThat(rsl, lessThan(0));
 	}
+
 	@Test
 	public void whenSortByAgeAscending() {
 		Comparator<User> ascenAge = new AscendingByAge();
@@ -76,6 +77,7 @@ public class UserTest {
 		);
 		assertThat(rsl, lessThan(0));
 	}
+
 	@Test
 	public void whenCombinedSortByNameAscendingSortAndByAgeDescendingSort() {
 		Comparator<User> comb = new AscendingByName().thenComparing(new DescendingByAge());

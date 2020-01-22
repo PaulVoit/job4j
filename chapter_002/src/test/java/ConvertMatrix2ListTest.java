@@ -15,31 +15,19 @@ import static org.junit.Assert.assertThat;
 public class ConvertMatrix2ListTest {
 	@Test
 	public void when2on2ArrayThenList4() {
-		ConvertMatrix2List list = new ConvertMatrix2List();
 		int[][] input = {
 				{1, 2},
 				{3, 4}
 		};
-		List<Integer> expect = Arrays.asList(
-				1, 2, 3, 4
-		);
-		List<Integer> result = list.toList(input);
-		assertThat(result, is(expect));
+		assertThat(new ConvertMatrix2List().toList(input), is(List.of(1, 2, 3, 4)));
 	}
+
 	@Test
 	public void when2ArraysToOneList() {
 		ConvertMatrix2List list = new ConvertMatrix2List();
-		List<int[]> list1 = new ArrayList<>();
-		list1.add(new int[]{1, 2});
-		list1.add(new int[]{3, 4, 5, 6});
+		List<int[]> list1 = List.of(new int[]{1, 2}, new int[]{3, 4, 5, 6});
 		List<Integer> result = list.convert(list1);
-		List<Integer> expected = new ArrayList<>();
-		expected.add(1);
-		expected.add(2);
-		expected.add(3);
-		expected.add(4);
-		expected.add(5);
-		expected.add(6);
+		List<Integer> expected = List.of(1, 2, 3, 4, 5, 6);
 		assertArrayEquals(expected.toArray(new Integer[0]), result.toArray(new Integer[0]));
 	}
 }
