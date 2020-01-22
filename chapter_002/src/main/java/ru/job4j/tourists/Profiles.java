@@ -5,6 +5,6 @@ import java.util.stream.Collectors;
 
 public class Profiles {
 	public List<Address> collect(List<Profile> profiles) {
-		return profiles.stream().map(adr -> adr.getAddress()).distinct().sorted(new SortByCity()).collect(Collectors.toList());
+		return profiles.stream().map(adr -> adr.getAddress()).sorted(new SortByCity()).distinct().collect(Collectors.toList());
 	}
 }
