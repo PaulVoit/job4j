@@ -44,13 +44,14 @@ public class SchoolTest {
 	@Test
 	public void whenListToMap() {
 		School school = new School();
-		Student student1 = new Student("Svetlana");
-		Student student2 = new Student("Andrey");
-		List<Student> students = List.of(student1, student2);
+		Student student1 = new Student("Svetlana", 20);
+		Student student2 = new Student("Andrey", 20);
+		Student student3 = new Student("Andrey", 30);
+		List<Student> students = List.of(student1, student2, student3);
 		Map<String, Student> result = school.listToMap(students);
 		Map<String, Student> expected = new HashMap<>();
 		expected.put("Svetlana", student1);
-		expected.put("Andrey", student2);
+		expected.put("Andrey", student3);
 		assertThat(result, is(expected));
 	}
 

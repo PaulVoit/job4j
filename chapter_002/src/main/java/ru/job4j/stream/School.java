@@ -13,7 +13,7 @@ public class School {
 
 
 	public Map<String, Student> listToMap(List<Student> students) {
-		return students.stream().collect(Collectors.toMap(x -> x.getName(), x -> x));
+		return students.stream().distinct().collect(Collectors.toMap(x -> x.getName(), x -> x));
 	}
 
 	public List<Student> levelOf(List<Student> students, int bound) {
