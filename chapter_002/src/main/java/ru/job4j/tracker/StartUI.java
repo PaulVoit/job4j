@@ -7,10 +7,11 @@ import java.util.List;
 import java.util.function.Consumer;
 
 
-public class StartUI {
+public class StartUI implements UserAction {
 
 	private final Input input;
 	private final Tracker tracker;
+	private ExitAction exitAction = new ExitAction(this);
 	private final Consumer<String> output;
 
 	public StartUI(Input input, Tracker tracker, Consumer<String> output) {
@@ -25,7 +26,9 @@ public class StartUI {
 			this.showMenu(actions, output);
 			int select = input.askInt("Select: ", actions.size());
 			UserAction action = actions.get(select);
+			exitAction.exit(input, tracker, output);
 			run = action.execute(input, tracker, output);
+
 		}
 	}
 
@@ -113,4 +116,25 @@ public class StartUI {
 				.init(validate, tracker, actions, System.out::println);
 	}
 
+
+	@Override
+	public int key() {
+		return 0;
+	}
+
+	@Override
+	public String info() {
+		return null;
+	}
+
+	@Override
+	public String name() {
+		return null;
+	}
+
+	@Override
+	public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
+		System.out.println("Вызов метода обратного вызова");
+		return false;
+	}
 }
